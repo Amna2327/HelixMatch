@@ -1,7 +1,7 @@
 const payload = {
     patientID: "PT_123",
     sequences: [
-        { gene: "CFTR", sequenceData: "ATTGTC" },//correct
+        { gene: "CFTR_F508", sequenceData: "ATTTCATTCTGTTCTCAGTTTTCCTGGATTATGCCTGGC" },//correct
         { gene: "HBB", sequenceData: "hasghgasyu" },//wrong sequence
         { gene: "Fake", sequenceData: "csds" }//fake gene
     ]
