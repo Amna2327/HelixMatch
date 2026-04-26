@@ -1,0 +1,212 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helix Match</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-mode">
+    <div class="header">
+        <div class="logo">🧬 Helix Match</div>
+        <div class="header-controls">
+            <div class="info-display">
+                <div class="info-item">
+                    <span class="info-label">Sequence</span>
+                    <span class="info-value" id="info-length">0 bp</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Mutations</span>
+                    <span class="info-value" id="info-mutations">0</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">View Range</span>
+                    <span class="info-value" id="info-range">-</span>
+                </div>
+            </div>
+            <div class="theme-toggle" onclick="toggleTheme()">
+                <div class="theme-toggle-circle">
+                    <span id="theme-icon">🌙</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="main-content">
+            <div class="sidebar">
+                <div>
+                    <h3 class="section-title">Load Sequence</h3>
+                    <div class="input-group">
+                        <label class="input-label">DNA Sequence File</label>
+                        <input type="file" id="fileInput" accept=".txt,.fasta,.fa" />
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="section-title">View Range</h3>
+                    <div class="input-group">
+                        <label class="input-label">Start Position</label>
+                        <input type="number" id="startPos" min="0" placeholder="0" />
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">End Position</label>
+                        <input type="number" id="endPos" min="0" placeholder="100" />
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="section-title">Sequence</h3>
+                    <div class="sequence-display" id="sequenceDisplay"></div>
+                </div>
+                
+                <div class="button-group">
+                    <button onclick="loadAndVisualize()">Visualize 3D</button>
+                    <button class="secondary" onclick="resetView()">Reset</button>
+                </div>
+
+                <div class="info-panel">
+                    <div class="info-panel-title">Detected Mutations</div>
+                    <div class="info-content" id="mutationInfo">
+                        Load a sequence to detect mutations.
+                    </div>
+                </div>
+            </div>
+
+            <div class="viewer-section">
+                <canvas id="canvas3d"></canvas>
+             <button> add </button>
+                <button> minus </button>
+                <button> home </button>
+                <button> play/pause </button>
+                on click, camera will pan to the neucleotide with info box presented . when clicked out, home config with rotation called
+                <div class="loading" id="loadingIndicator">
+                    <div class="spinner"></div>
+                    <div>Rendering 3D model...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tooltip" id="tooltip"></div>
+
+    <script src="js/viewer3D.js"></script>
+    <script src="script.js"></script>
+    
+</body>
+</html> 
+-->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helix Match</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-mode">
+    <div class="header">
+        <div class="logo">🧬 Helix Match</div>
+        <div class="header-controls">
+            <div class="info-display">
+                <div class="info-item">
+                    <span class="info-label">Sequence</span>
+                    <span class="info-value" id="info-length">0 bp</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Mutations</span>
+                    <span class="info-value" id="info-mutations">0</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">View Range</span>
+                    <span class="info-value" id="info-range">-</span>
+                </div>
+            </div>
+            <div class="theme-toggle">
+                <div class="theme-toggle-circle">
+                    <span id="theme-icon">🌙</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="main-content">
+            <div class="sidebar">
+                <div>
+                    <h3 class="section-title">Load Sequence</h3>
+                    <div class="input-group">
+                        <label class="input-label">DNA Sequence File</label>
+                        <input type="file" id="fileInput" accept=".txt,.fasta,.fa" />
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="section-title">View Range</h3>
+                    <div class="input-group">
+                        <label class="input-label">Start Position</label>
+                        <input type="number" id="startPos" min="0" placeholder="0" />
+                    </div>
+                    <div class="input-group">
+                        <label class="input-label">End Position</label>
+                        <input type="number" id="endPos" min="0" placeholder="100" />
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="section-title">Sequence</h3>
+                    <div class="sequence-display" id="sequenceDisplay"></div>
+                </div>
+
+                <div class="button-group">
+                    <button onclick="loadAndVisualize()">Visualize 3D</button>
+                    <button class="secondary" onclick="resetView()">Reset</button>
+                </div>
+
+                <div class="info-panel">
+                    <div class="info-panel-title">Detected Mutations</div>
+                    <div class="info-content" id="mutationInfo">
+                        Load a sequence to detect mutations.
+                    </div>
+                </div>
+            </div>
+
+            <div class="viewer-section">
+                <canvas id="canvas3d"></canvas>
+
+                <div class="viewer-controls">
+                    <button class="control-btn zoom-in" title="Zoom In" onclick="zoomIn()">
+                        <span>✚</span>
+                    </button>
+                    <button class="control-btn zoom-out" title="Zoom Out" onclick="zoomOut()">
+                        <span>—</span>
+                    </button>
+                    <button class="control-btn play-pause" title="Play/Pause" onclick="toggleAnimation()">
+                        <span id="play-pause-icon">⏸</span>
+                    </button>
+                    <button class="control-btn home" title="Reset View" onclick="resetViewer()">
+                        <span>🏠︎</span>
+                    </button>
+                </div>
+                
+                <!-- ⌂ ⏸ -->
+                <div class="loading" id="loadingIndicator">
+                    <div class="spinner"></div>
+                    <div>Rendering 3D model...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tooltip" id="tooltip"></div>
+
+    <!-- Load modules in correct order -->
+    <script src="js/viewer3D.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+    "mutations": [
+        {
+            "position": [68, 69, 70],
+            "disease": "Breast Cancer",
+            "type": "BRCA1",
+            "risk": "High",
+            "severity": "High"
+        },
+        {
+            "position": [148, 149],
+            "disease": "Cystic fibrosis",
+            "type": "CFTR",
+            "risk": "Moderate",
+            "severity": "Low"
+        },
+        {
+            "position": [120, 121, 122],
+            "disease": "Sickle Cell Anemia",
+            "type": "HBB",
+            "risk": "High",
+            "severity": "Moderate"
+        }
+    ]
+}
