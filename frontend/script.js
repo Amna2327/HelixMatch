@@ -118,7 +118,6 @@ function updateSequenceDisplay() {
 function selectNucleotide(index, nucleotide, e) {
     // Only for problem nucleotides
     if (!state.problemIndices.has(index)) return;
-    
     // Remove previous selection
     document.querySelectorAll('.nucleotide.selected').forEach(el => {
         el.classList.remove('selected');
@@ -133,6 +132,17 @@ function selectNucleotide(index, nucleotide, e) {
     state.viewer3D.highlightNucleotide(index);
     
 }
+
+
+// deselects problem nucleotides when clicking outside
+document.addEventListener('click', function(e) {
+    if (!e.target.classList.contains('nucleotide')) {
+        document.querySelectorAll('.nucleotide.selected').forEach(el => {
+            el.classList.remove('selected');
+        });
+        state.selectedNucleotide = null;
+    }
+});
 
 function showNucleotideInfo(index, nucleotide, e) {
     const tooltip = document.getElementById('tooltip');
