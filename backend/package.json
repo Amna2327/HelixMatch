@@ -8,6 +8,8 @@
         "dev": "nodemon server.js"
     },
     "dependencies": {
+        "cors": "^2.8.6",
+        "dotenv": "^17.4.2",
         "express": "^4.22.1",
         "pdfkit": "^0.15.0"
     },

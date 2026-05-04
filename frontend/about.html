@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">🧬 Helix Match</div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-link" data-page="home">Home</a></li>
+            <li><a href="about.html" class="nav-link active" data-page="about">About</a></li>
+            <li><a href="contact.html" class="nav-link" data-page="contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <!-- ABOUT PAGE -->
+    <div id="about" class="page active">
+        <div class="container">
+            <h1 style="color: var(--primary-blue); margin-bottom: 2rem;">About</h1>
+               
+            <div class="about-section">
+                <h2>Project Overview</h2>
+                <p>HelixMatch is a dynamic programming-based pre-screening tool that assesses genetic disease risk by comparing user-submitted DNA sequences against a curated library of known pathogenic mutations. It returns ranked risk percentages for referenced diseases, functioning as a triage layer that narrows the diagnostic space before expensive confirmatory testing.</p>
+                
+                <h2>Research Behind it</h2>
+                <p>Hereditary diseases affect roughly 1 in 17 people globally, with 80% of rare diseases having a genetic origin. Yet commercial DNA kits cost 100-2,000, out of reach for populations in low-income countries where GNI per capita falls below $1,000. This diagnostic inequity, combined with the fact that most causative mutations are well-characterized and publicly documented, motivated an algorithmic pre-screening alternative that reduces cost barriers without sacrificing detection sensitivity.</p>
+                
+                <h2>Dynamic Programming and Project Outcomes</h2>
+                <p>A naïve approach to DNA comparison enumerates all possible alignments i.e., an exponential operation infeasible for real genetic data. </p>
+                <p>Dynamic programming collapses this by breaking the problem into overlapping subproblems, storing results in a scoring matrix, and computing each cell exactly once from previously solved neighbors. The result: an intractable search becomes a deterministic O(m × n) operation, guaranteeing optimal local alignment with modest computational resources</p>
+                
+                <h2>The Algorithm</h2>
+                <p>HelixMatch employs the Smith-Waterman algorithm, designed specifically for local sequence alignment. Unlike global methods that compare sequences end-to-end, it identifies the highest-scoring matching subsequence which is ideal for short hereditary mutation windows embedded within longer genomes. Each cell in the (m+1) × (n+1) scoring matrix is computed as:</p>
+                <p>H[i][j] = max(0, H[i-1][j-1] + match/mismatch, H[i-1][j] + gap, H[i][j-1] + gap)</p>
+                <ul>
+                    <li><strong>Zero floor</strong> discards poorly matching regions, keeping only locally similar subsequences</li>
+                    <li><strong>Gap penalties</strong> detect insertions and deletions alongside point mutations</li>
+                    <li><strong>Traceback</strong> from the highest-scoring cell extracts the optimal matching subsequence</li>
+                </ul>
+                <br>
+                <p>Raw alignment scores are converted into meaningful metrics via a position-based ranking matrix, where mutation location within a gene carries differential clinical weight. The output presents a chance percentage per referenced disease, accompanied by a 3D visualization of the relevant sequence window and a downloadable PDF report.</p>
+                
+                <h2>Research tool</h2>
+                <p>HelixMatch is an early detection instrument for research contexts. It does not replace clinical diagnosis, rather it precedes it by flagging potential risks algorithmically so targeted confirmatory tests are ordered only where evidence supports them. This narrows the diagnostic space, reduces reliance on broad costly panels, and helps make genetic screening accessible where it is needed most.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
