@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helix Match - DNA Analysis</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">🧬 Helix Match</div>
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-link active" data-page="home">Home</a></li>
+            <li><a href="about.html" class="nav-link" data-page="about">About</a></li>
+            <li><a href="contact.html" class="nav-link" data-page="contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+        <div class="container">
+            <div class="welcome-section">
+                <h1>Welcome to Helix Match</h1>
+                <p>Upload DNA sequences in FASTA format to analyze genetic mutations and identify potential disease matches through advanced Smith-Waterman sequence alignment. Our system provides detailed diagnostic insights with confidence scoring.</p>
+            </div>
+
+            <div class="upload-section">
+                <h2>Upload DNA Sequences</h2>
+                <div class="file-input-wrapper">
+                    <input type="file" id="fileInput" accept=".fasta,.fa,.txt" multiple>
+                    <label for="fileInput" class="file-input-label">+ Choose FASTA Files</label>
+                </div>
+                
+                <div class="file-list">
+                    <div id="uploadedFiles"></div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-primary" id="analyzeBtn" disabled>Analyze</button>
+                    <button class="btn btn-secondary" id="clearBtn">Clear All</button>
+                </div>
+            </div>
+
+            <div class="error-message" id="errorMessage"></div>
+            <div class="success-message" id="successMessage"></div>
+
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <h2>Analysis Results</h2>
+                <div class="results-container" id="resultsContainer"></div>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button class="btn btn-primary" id="generatePdfBtn">📄 Generate PDF Report</button>
+                </div>
+            </div>
+
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <div class="empty-state-icon">📊</div>
+                <p>No analysis results yet. Upload and analyze DNA sequences to see results here.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- DETAIL MODAL -->
+    <div id="detailModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
