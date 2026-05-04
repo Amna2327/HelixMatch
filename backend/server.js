@@ -1,6 +1,9 @@
 const express = require('express');
 const fs = require('fs')
 const path = require('path')
+const cors = require('cors');
+require('dotenv').config();
+
 const { parseFasta } = require("./utils/fastaParser")
 const { ValidateDNA } = require("./services/gateKeeper")
 const { reportEngine } = require("./services/reportEngine")
