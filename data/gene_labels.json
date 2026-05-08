@@ -1,0 +1,22 @@
+{
+  "CFTR": {
+    "description": "Cystic Fibrosis", 
+    "variants": ["CFTR_G542X", "CFTR_W1282X", "CFTR_F508"]
+  },
+  "HBB": {
+    "description": "Sickle Cell", 
+    "variants": ["HBB"]
+  },
+  "HTT": {
+    "description": "Huntington", 
+    "variants": ["HTT"]
+  },
+  "PKU": {
+    "description": "Phenylketonuria", 
+    "variants": ["PKU_PAH"]
+  },
+  "Taysachs": {
+    "description": "Tay-Sachs", 
+    "variants": ["Taysachs_HEXA"]
+  }
+}

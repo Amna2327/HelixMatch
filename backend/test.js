@@ -17,7 +17,6 @@ function getPatientDNA() {
             sequenceData: DNA
         })
     }
-
     /*const files = fs.readdirSync(AbsoluteDirectoryPath);
     let GeneSequences = [];
 

@@ -22,37 +22,51 @@
         <div class="container">
             <div class="welcome-section">
                 <h1>Welcome to Helix Match</h1>
-                <p>Upload DNA sequences in FASTA format to analyze genetic mutations and identify potential disease matches through advanced Smith-Waterman sequence alignment. Our system provides detailed diagnostic insights with confidence scoring.</p>
+                <p>Upload DNA sequences in FASTA format to analyze genetic mutations and identify potential disease matches with confidence scoring via advanced Smith-Waterman sequence alignment.</p>
             </div>
 
-            <div class="upload-section">
-                <h2>Upload DNA Sequences</h2>
-                <div class="file-input-wrapper">
-                    <input type="file" id="fileInput" accept=".fasta,.fa,.txt" multiple>
-                    <label for="fileInput" class="file-input-label">+ Choose FASTA Files</label>
-                </div>
-                
-                <div class="file-list">
-                    <div id="uploadedFiles"></div>
-                </div>
+            <!-- MAIN LAYOUT: Two-column (Disease Selection + Upload on right) -->
+            <div class="analysis-layout">
+                <div class="analysis-main">
+                    <!-- Files with Individual Disease Selection -->
+                    <div class="files-section">
+                        <h2>📋 Uploaded Files</h2>
+                        <div class="file-list">
+                            <div id="uploadedFiles"></div>
+                            <div id="emptyFilesList" class="empty-files-message">No files uploaded yet</div>
+                        </div>
+                    </div>
 
-                <div class="button-group">
-                    <button class="btn btn-primary" id="analyzeBtn" disabled>Analyze</button>
-                    <button class="btn btn-secondary" id="clearBtn">Clear All</button>
+                    <!-- Action Buttons -->
+                    <div class="button-group">
+                        <button class="btn btn-primary" id="analyzeBtn">🚀 Analyze</button>
+                        <button class="btn btn-secondary" id="clearBtn">🗑️ Clear All</button>
+                        <!-- Messages -->
+                        <div class="success-message" id="successMessage"></div>
+                        <div class="error-message" id="errorMessage"></div>
+                    </div>
                 </div>
+                <!-- RIGHT SIDEBAR: Upload Section (Compact) -->
+                <aside class="upload-sidebar">
+                    <h3>📁 Upload FASTA/TXT</h3>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="fileInput" accept=".fasta,.fa,.txt" multiple>
+                        <label for="fileInput" class="file-input-label">+ Add Files</label>
+                    </div>
+                    <div class="upload-info">
+                        <span id="fileCount">0 files</span>
+                    </div>
+                </aside>
             </div>
-
-            <div class="error-message" id="errorMessage"></div>
-            <div class="success-message" id="successMessage"></div>
-
+  
+            <!-- Results Section -->
             <div class="results-section" id="resultsSection" style="display: none;">
-                <h2>Analysis Results</h2>
+                <h2>📊 Analysis Results</h2>
                 <div class="results-container" id="resultsContainer"></div>
                 <div style="text-align: center; margin-top: 2rem;">
                     <button class="btn btn-primary" id="generatePdfBtn">📄 Generate PDF Report</button>
                 </div>
-            </div>
-
+            </div>   
             <div class="empty-state" id="emptyState" style="display: none;">
                 <div class="empty-state-icon">📊</div>
                 <p>No analysis results yet. Upload and analyze DNA sequences to see results here.</p>
@@ -70,7 +84,6 @@
             <div id="modalBody"></div>
         </div>
     </div>
-
-    <script src="js/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
