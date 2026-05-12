@@ -306,6 +306,7 @@ function renderResults() {
                     <th>Status</th>
                     <th>Variant Detected</th>
                     <th>Match Value</th>
+                    <th>Recommendations</th>
                 </tr>
             </thead>
             <tbody>
@@ -322,6 +323,7 @@ function renderResults() {
                     <td><span class="status-badge status-rejected">Rejected</span></td>
                     <td>N/A</td>
                     <td>N/A</td>
+                    <td>${report.message}</td>
                 </tr>
             `;
         } else if (report.status === 'Accepted') {
@@ -346,6 +348,7 @@ function renderResults() {
                     <td><span class="status-badge status-confirmed">Accepted</span></td>
                     <td><strong>${variantDetected}</strong></td>
                     <td><span class="match-value ${matchClass}">${matchValue}%</span></td>
+                    <td>${report.message}</td>
                 </tr>
             `;
         }
@@ -390,6 +393,7 @@ function generateClientPDF() {
                 <td style="padding: 0.5cm; border-bottom: 1px solid #e5e7eb;">${statusBadge}</td>
                 <td style="padding: 0.5cm; border-bottom: 1px solid #e5e7eb; font-weight: bold;">${variantDetected}</td>
                 <td style="padding: 0.5cm; border-bottom: 1px solid #e5e7eb; font-weight: bold; color: #2563eb;">${matchValue}%</td>
+                <td style="padding: 0.5cm; border-bottom: 1px solid #e5e7eb;">${report.message}</td>
             </tr>
         `;
     });
@@ -430,6 +434,7 @@ function generateClientPDF() {
                             <th>Status</th>
                             <th>Variant Detected</th>
                             <th>Match Value</th>
+                            <th>Recommendations</th>
                         </tr>
                     </thead>
                     <tbody>
